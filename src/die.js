@@ -21,7 +21,7 @@ export const DieColor = {
   Black: 1,
 };
 
-export default class Die {
+export class Die {
   value;
   color;
 
