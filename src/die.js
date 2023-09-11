@@ -21,13 +21,13 @@ export const DieColor = {
   Black: 1,
 };
 
-export class Die {
+export class AbstractDie {
   value;
   color;
 
   constructor(color) {
     this.color = color;
-    this.value = Die.roll();
+    this.value = AbstractDie.roll();
   }
 
   static roll() {
@@ -36,9 +36,9 @@ export class Die {
 
   static rollDice() {
     let white = [
-      new Die(DieColor.White),
-      new Die(DieColor.White),
-      new Die(DieColor.White),
+      new AbstractDie(DieColor.White),
+      new AbstractDie(DieColor.White),
+      new AbstractDie(DieColor.White),
     ];
     let clovers = white.reduce((acc, curr) => {
       if (WhiteSide.Clover === curr.value) {
@@ -47,12 +47,12 @@ export class Die {
       return acc;
     }, 0);
     if (3 === clovers) {
-      return Die.rollDice();
+      return AbstractDie.rollDice();
     }
     let black = [
-      new Die(DieColor.Black),
-      new Die(DieColor.Black),
-      new Die(DieColor.Black),
+      new AbstractDie(DieColor.Black),
+      new AbstractDie(DieColor.Black),
+      new AbstractDie(DieColor.Black),
     ];
     let skulls = [...white, ...black].reduce((acc, curr) => {
       if (curr.color === DieColor.Black && BlackSide.Skull === curr.value) {
@@ -66,7 +66,7 @@ export class Die {
       return acc;
     }, 0);
     if (3 <= skulls) {
-      return Die.rollDice();
+      return AbstractDie.rollDice();
     }
     return {
       white,
