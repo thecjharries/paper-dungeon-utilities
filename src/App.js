@@ -12,7 +12,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App" style={{ textAlign: "center" }}>
         <DiceTable dice={this.state.dice} />
         <button
           onClick={() =>
