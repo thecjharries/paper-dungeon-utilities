@@ -30,6 +30,39 @@ export class AbstractDie {
     this.value = AbstractDie.roll();
   }
 
+  face() {
+    if (DieColor.White === this.color) {
+      switch (this.value) {
+        case WhiteSide.Warrior:
+          return "Warrior";
+        case WhiteSide.Wizard:
+          return "Wizard";
+        case WhiteSide.Cleric:
+          return "Cleric";
+        case WhiteSide.Rogue:
+          return "Rogue";
+        case WhiteSide.Skull:
+          return "Skull";
+        default:
+          return "Clover";
+      }
+    }
+    switch (this.value) {
+      case BlackSide.Warrior:
+        return "Warrior";
+      case BlackSide.Wizard:
+        return "Wizard";
+      case BlackSide.Cleric:
+        return "Cleric";
+      case BlackSide.Rogue:
+        return "Rogue";
+      case BlackSide.Skull:
+        return "Skull";
+      default:
+        return "Boot";
+    }
+  }
+
   static roll() {
     return Math.floor(Math.random() * 6) + 1;
   }
@@ -79,9 +112,14 @@ export default function Die(props) {
   const self = props.self;
   return (
     <div
-      className={"die " + (DieColor.White === self.color ? "white" : "black")}
-    >
-      {self.value}
-    </div>
+      className={`die ${
+        DieColor.White === self.color ? "white" : "black"
+      } ${self.face().toLowerCase()}`}
+      style={{
+        backgroundImage: `url(/assets/${
+          DieColor.White === self.color ? "white" : "black"
+        }-${self.face().toLowerCase()}.png)`,
+      }}
+    ></div>
   );
 }
