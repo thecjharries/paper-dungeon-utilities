@@ -63,6 +63,15 @@ export class AbstractDie {
     }
   }
 
+  static sort(a, b) {
+    if (a.value < b.value) {
+      return -1;
+    } else if (a.value > b.value) {
+      return 1;
+    }
+    return 0;
+  }
+
   static roll() {
     return Math.floor(Math.random() * 6) + 1;
   }
@@ -101,6 +110,8 @@ export class AbstractDie {
     if (3 <= skulls) {
       return AbstractDie.rollDice();
     }
+    white.sort(AbstractDie.sort);
+    black.sort(AbstractDie.sort);
     return {
       white,
       black,
