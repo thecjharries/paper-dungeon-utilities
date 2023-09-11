@@ -127,7 +127,7 @@ export default function Die(props) {
         DieColor.White === self.color ? "white" : "black"
       } ${self.face().toLowerCase()}`}
       style={{
-        backgroundImage: `url(/assets/${
+        backgroundImage: `url(${process.env.PUBLIC_URL}/assets/${
           DieColor.White === self.color ? "white" : "black"
         }-${self.face().toLowerCase()}.png)`,
       }}
