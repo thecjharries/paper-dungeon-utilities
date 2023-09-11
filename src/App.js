@@ -1,15 +1,31 @@
-import logo from "./logo.svg";
-import "./App.css";
 import DiceTable from "./DiceTable";
 import { AbstractDie } from "./Die";
+import React from "react";
 
-function App() {
-  const dice = AbstractDie.rollDice();
-  return (
-    <div className="App">
-      <DiceTable dice={dice} />
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dice: AbstractDie.rollDice(),
+    };
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <DiceTable dice={this.state.dice} />
+        <button
+          onClick={() =>
+            this.setState({
+              dice: AbstractDie.rollDice(),
+            })
+          }
+        >
+          Roll Dice
+        </button>
+      </div>
+    );
+  }
 }
 
 export default App;
