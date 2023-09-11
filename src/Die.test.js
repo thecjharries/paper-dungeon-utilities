@@ -1,4 +1,4 @@
-import { AbstractDie, DieColor, WhiteSide, BlackSide } from "./die";
+import { AbstractDie, DieColor, WhiteSide, BlackSide } from "./Die";
 
 test("Dice have colors", () => {
   const white = new AbstractDie(DieColor.White);
