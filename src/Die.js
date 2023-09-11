@@ -74,3 +74,14 @@ export class AbstractDie {
     };
   }
 }
+
+export default function Die(props) {
+  const self = props.self;
+  return (
+    <div
+      className={"die " + (DieColor.White === self.color ? "white" : "black")}
+    >
+      {self.value}
+    </div>
+  );
+}
